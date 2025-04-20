@@ -1,0 +1,22 @@
+{
+    "Binary Search": {
+        "ten thousand": 0.002743799996096641,
+        "one hundred thousand": 0.003291499975603074,
+        "one million": 0.004650000017136335
+    },
+    "Jump Search": {
+        "ten thousand": 0.0002660999889485538,
+        "one hundred thousand": 0.0004039999912492931,
+        "one million": 0.0005532000213861465
+    },
+    "Linear Search": {
+        "ten thousand": 0.0025059999898076057,
+        "one hundred thousand": 0.029904000053647906,
+        "one million": 0.2148089000256732
+    },
+    "Ternary Search": {
+        "ten thousand": 2.19999928958714e-05,
+        "one hundred thousand": 2.5399960577487946e-05,
+        "one million": 2.889998722821474e-05
+    }
+}

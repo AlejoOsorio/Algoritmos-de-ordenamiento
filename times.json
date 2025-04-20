@@ -1,0 +1,26 @@
+{
+    "Quick Sort": {
+        "ten thousand": 2.5150661999941804,
+        "one hundred thousand": 27.60095229995204,
+        "one million": 261.44967920001363
+    },
+    "Radix Sort": {
+        "ten thousand": 0.03234019997762516,
+        "one hundred thousand": 0.4338673999882303,
+        "one million": 5.127737500006333
+    },
+    "Merge Sort": {
+        "ten thousand": 3.7256181000266224,
+        "one hundred thousand": 36.39096739998786,
+        "one million": 374.44539540004916
+    },
+    "Bitonic Sort": {
+        "ten thousand": 0.2800490999943577,
+        "one hundred thousand": 3.748028100002557,
+        "one million": 47.99622369999997
+    },
+    "Bubble Sort": {
+        "ten thousand": 16.422390300023835,
+        "one hundred thousand": 1900.8516903999844
+    }
+}

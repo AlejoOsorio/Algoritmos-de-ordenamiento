@@ -1,5 +1,5 @@
 import json
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt 
 from algorithms.search.binary_search import binary_search
 from algorithms.search.jump_search import jump_search
 from algorithms.search.linear_search import linear_search
@@ -161,7 +161,7 @@ def search_algorithms(element):
 
 def main():
     # Se generan los arreglos y se guardan en archivos
-    # generate_arrays()
+    #generate_arrays()
 
     # Se ejecutan los algoritmos de ordenamiento y se almacena el tiempo de ejecución de todos
     times = sort_algorithms()
