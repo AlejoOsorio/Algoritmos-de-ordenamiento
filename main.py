@@ -1,3 +1,4 @@
+import os
 import matplotlib.pyplot as plt
 from algorithms.search.binary_search import binary_search
 from algorithms.search.jump_search import jump_search
@@ -9,12 +10,14 @@ from algorithms.sort.merge_sort import mergeSort
 from algorithms.sort.quick_sort import quicksort
 from algorithms.sort.radix_sort import radix_sort
 from utils.generate_list import file_to_list, generate_list, list_to_file
-from utils.utils import print_time, write_to_json
+from utils.utils import print_time, read_from_json, write_to_json
 
 
 file_list_ten = "lists/list_ten_thousand.txt"
 fiel_list_hundred = "lists/list_one_hundred_thousand.txt"
 file_list_million = "lists/list_one_million.txt"
+file_sort_times = "times_sort.json"
+file_search_times = "times_search.json"
 
 lists = [file_list_ten, fiel_list_hundred, file_list_million]
 keys = ["ten thousand", "one hundred thousand", "one million"]
@@ -85,7 +88,8 @@ def sort_algorithms_time(times: dict[str, dict[str, float]]):
 
 # Geneara los graficos de barras segun el diccionario de tiempos
 def generate_bar_charts(sorted_dict_by_size: dict[str, dict[str, float]], name = ""):
-    for size, algos in sorted_dict_by_size.items():
+    for index, (size, algos) in enumerate(sorted_dict_by_size.items()):
+        custom_index = 10 ** index
         algorithms = list(algos.keys())
         times = [algos[alg] for alg in algorithms]
 
@@ -97,20 +101,22 @@ def generate_bar_charts(sorted_dict_by_size: dict[str, dict[str, float]], name =
         plt.xticks(rotation=45)
         plt.tight_layout()
 
-        plt.savefig(f"{name}-{size}.png")
+        os.makedirs("charts", exist_ok=True)
+
+        plt.savefig(f"charts/{name} {custom_index * 10000} ({size}).png")
         plt.close()
 
 
 # Genera los arreglos de las tres dimensiones y los guarda en archivos txt
 def generate_arrays():
     list = generate_list(10000)
-    list_to_file(list, "lists/list_ten_thousand.txt")
+    list_to_file(list, file_list_ten)
 
     list2 = generate_list(100000)
-    list_to_file(list2, "lists/list_one_hundred_thousand.txt")
+    list_to_file(list2, fiel_list_hundred)
 
     list3 = generate_list(1000000)
-    list_to_file(list3, "lists/list_one_million.txt")
+    list_to_file(list3, file_list_million)
 
 
 # Invoca los algoritmos de ordenamiento y retorna el tiempo que le toma a todos en ordenar los arreglos
@@ -118,23 +124,23 @@ def sort_algorithms():
     times = {}
 
     times["Quick Sort"] = test_sort_algorithm("Quick Sort", quicksort)
-    write_to_json("times.json", times)
+    write_to_json(file_sort_times, times)
     print()
 
     times["Radix Sort"] = test_sort_algorithm("Radix Sort", radix_sort)
-    write_to_json("times.json", times)
+    write_to_json(file_sort_times, times)
     print()
 
     times["Merge Sort"] = test_sort_algorithm("Merge Sort", mergeSort)
-    write_to_json("times.json", times)
+    write_to_json(file_sort_times, times)
     print()
 
     times["Bitonic Sort"] = test_sort_algorithm("Bitonic Sort", bitonic_sort)
-    write_to_json("times.json", times)
+    write_to_json(file_sort_times, times)
     print()
 
     times["Bubble Sort"] = test_sort_algorithm("Bubble Sort", bubble_sort, list_times=keys[:2])
-    write_to_json("times.json", times)
+    write_to_json(file_sort_times, times)
 
     return times
 
@@ -142,24 +148,27 @@ def search_algorithms(element):
     times = {}
 
     times["Binary Search"] = test_search_algorithm("Binary Search", binary_search, element)
-    write_to_json("times_serch.json", times)
+    write_to_json(file_search_times, times)
     print()
     
     times["Jump Search"] = test_search_algorithm("Jump Search", jump_search, element)
-    write_to_json("times_serch.json", times)
+    write_to_json(file_search_times, times)
     print()
     
     times["Linear Search"] = test_search_algorithm("Linear Search", linear_search, element)
-    write_to_json("times_serch.json", times)
+    write_to_json(file_search_times, times)
     print()
 
     times["Ternary Search"] = test_search_algorithm("Ternary Search", ternarySearch, element)
-    write_to_json("times_serch.json", times)
+    write_to_json(file_search_times, times)
     
     return times
 
 
 def main():
+    print()
+    print("# Algoritmos de ordenamiento #")
+    print()
     # Se generan los arreglos y se guardan en archivos
     generate_arrays()
 
@@ -171,6 +180,8 @@ def main():
 
     # Se generan los graficos de barras con los tiempos ya ordenados
     generate_bar_charts(sorted_times, "sort_algorithms")
+    print()
+    print("# Algoritmos de búsqueda #")
     print()
 
     # Busca el numero especifico con distintos algoritmos en las tres listas
