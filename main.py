@@ -29,7 +29,7 @@ def test_sort_algorithm(name, algorithm, list_times=None):
     for list, size, key in zip(lists, sizes, list_times):
         print(size)
         x = file_to_list(list)
-        time = algorithm(x)
+        _, time = algorithm(x)
         times[key] = time
         print("--> ", end="")
         print_time(name, time)
@@ -44,7 +44,8 @@ def test_search_algorithm(name, algorithm, element_to_seach, list_times=None):
     for list, size, key in zip(lists, sizes, list_times):
         print(size)
         x = file_to_list(list)
-        time = algorithm(x, element_to_seach)
+        x_sort, _ = radix_sort(x)
+        _, time = algorithm(x_sort, element_to_seach)
         times[key] = time
         print("--> ", end="")
         print_time(name, time)
@@ -160,7 +161,7 @@ def search_algorithms(element):
 
 def main():
     # Se generan los arreglos y se guardan en archivos
-    # generate_arrays()
+    generate_arrays()
 
     # Se ejecutan los algoritmos de ordenamiento y se almacena el tiempo de ejecución de todos
     times = sort_algorithms()
@@ -170,6 +171,7 @@ def main():
 
     # Se generan los graficos de barras con los tiempos ya ordenados
     generate_bar_charts(sorted_times, "sort_algorithms")
+    print()
 
     # Busca el numero especifico con distintos algoritmos en las tres listas
     search_times = search_algorithms(69787673)
