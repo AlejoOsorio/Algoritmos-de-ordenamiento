@@ -1,3 +1,4 @@
+# Este algoritmo fue extraido de https://4geeks.com/es/lesson/algoritmos-de-ordenamiento-y-busqueda-en-python
 from utils.utils import measure_time
 
 def binary_search(lista, objetivo):

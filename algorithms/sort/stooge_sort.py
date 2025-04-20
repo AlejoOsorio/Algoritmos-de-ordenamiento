@@ -1,3 +1,4 @@
+# Este algoritmo fue extraido de https://rosettacode.org/wiki/Sorting_algorithms/Stooge_sort#Python
 from utils.utils import measure_time
 
 

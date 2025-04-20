@@ -1,3 +1,4 @@
+# Este algoritmo fue extraido de https://stackabuse.com/jump-search-in-python/
 import math
 
 from algorithms.search.linear_search import __linear_search

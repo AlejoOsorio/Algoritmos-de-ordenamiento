@@ -1,3 +1,4 @@
+# Este algoritmo fue extraido de https://www.studytonight.com/python-programs/python-program-for-bitonic-sort
 from utils.utils import measure_time
 
 

@@ -1,4 +1,3 @@
-import json
 import matplotlib.pyplot as plt
 from algorithms.search.binary_search import binary_search
 from algorithms.search.jump_search import jump_search
@@ -84,7 +83,7 @@ def sort_algorithms_time(times: dict[str, dict[str, float]]):
     return times_sort
 
 # Geneara los graficos de barras segun el diccionario de tiempos
-def generate_bar_charts(sorted_dict_by_size: dict[str, dict[str, float]]):
+def generate_bar_charts(sorted_dict_by_size: dict[str, dict[str, float]], name = ""):
     for size, algos in sorted_dict_by_size.items():
         algorithms = list(algos.keys())
         times = [algos[alg] for alg in algorithms]
@@ -97,7 +96,7 @@ def generate_bar_charts(sorted_dict_by_size: dict[str, dict[str, float]]):
         plt.xticks(rotation=45)
         plt.tight_layout()
 
-        plt.savefig(f"execution_time_{size}.png")
+        plt.savefig(f"{name}-{size}.png")
         plt.close()
 
 
@@ -170,12 +169,12 @@ def main():
     sorted_times = sort_algorithms_time(times)
 
     # Se generan los graficos de barras con los tiempos ya ordenados
-    generate_bar_charts(sorted_times)
+    generate_bar_charts(sorted_times, "sort_algorithms")
 
     # Busca el numero especifico con distintos algoritmos en las tres listas
     search_times = search_algorithms(69787673)
     sorted_search_times = sort_algorithms_time(search_times)
-    generate_bar_charts(sorted_search_times)
+    generate_bar_charts(sorted_search_times, "search_algorithms")
 
 
 if __name__ == '__main__':
