@@ -1,13 +1,15 @@
 import json
-import timeit
+import time
 
 
 def measure_time(function):
     "Mide y retorna el tiempo de ejecución de una función"
     def function_measured(*args, **kwargs):
-        timer = timeit.Timer(lambda: function(*args, **kwargs))
-        time = timer.timeit(number=1)
-        return time
+        start = time.time()
+        result = function(*args, **kwargs)
+        end = time.time()
+        duration = end - start
+        return result, duration
     return function_measured
 
 

@@ -1,3 +1,4 @@
+# Este algoritmo fue extraido de https://stackabuse.com/jump-search-in-python/
 from utils.utils import measure_time
 
 

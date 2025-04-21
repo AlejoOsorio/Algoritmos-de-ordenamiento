@@ -1,3 +1,4 @@
+# Este algoritmo fue extraido de https://www.techiedelight.com/es/ternary-search-vs-binary-search/
 from utils.utils import measure_time
 
 

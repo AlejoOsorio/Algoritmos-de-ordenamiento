@@ -1,3 +1,4 @@
+# Este algoritmo fue extraido de https://how.dev/answers/merge-sort-in-python
 from utils.utils import measure_time
 
 

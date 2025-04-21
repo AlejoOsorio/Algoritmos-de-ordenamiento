@@ -1,3 +1,4 @@
+# Este algoritmo fue extraido de https://www.w3schools.com/dsa/dsa_algo_quicksort.php
 from utils.utils import measure_time
 
 #Esta función divide el arreglo en dos partes alrededor de un pivote (último elemento). 
